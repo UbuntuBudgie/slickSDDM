@@ -1,0 +1,22 @@
+{
+  "pressAnyKey": "Press any key",
+  "username": "Username",
+  "password": "Password",
+  "login": "Login",
+  "loggingIn": "Logging in",
+  "loginFailed": "Login failed",
+  "promptUser": "Enter your username",
+  "capslockWarning": "Caps Lock is on",
+  "suspend": "Suspend",
+  "reboot": "Reboot",
+  "shutdown": "Shutdown",
+  "changeSession": "Change session",
+  "changeKeyboardLayout": "Change keyboard layout",
+  "toggleVirtualKeyboard": "Toggle virtual keyboard",
+  "powerOptions": "Power options",
+  "closeUserSelection": "Close user selection",
+  "selectUser": "Select user",
+  "selectUserNamed": "Select user {name}",
+  "noKeyboardLayoutsConfigured": "No keyboard layouts configured. Please configure layouts in /etc/sddm.conf.d/*.conf",
+  "noUsersFound": "SDDM could not find any user. Type your username below:"
+}

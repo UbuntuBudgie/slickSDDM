@@ -1,0 +1,22 @@
+{
+  "pressAnyKey": "Drücken Sie eine beliebige Taste",
+  "username": "Benutzername",
+  "password": "Passwort",
+  "login": "Anmelden",
+  "loggingIn": "Anmeldung läuft",
+  "loginFailed": "Anmeldung fehlgeschlagen",
+  "promptUser": "Geben Sie Ihren Benutzernamen ein",
+  "capslockWarning": "Feststelltaste ist aktiviert",
+  "suspend": "Bereitschaft",
+  "reboot": "Neu starten",
+  "shutdown": "Herunterfahren",
+  "changeSession": "Sitzung ändern",
+  "changeKeyboardLayout": "Tastaturbelegung ändern",
+  "toggleVirtualKeyboard": "Virtuelle Tastatur umschalten",
+  "powerOptions": "Energieoptionen",
+  "closeUserSelection": "Benutzerauswahl schließen",
+  "selectUser": "Benutzer auswählen",
+  "selectUserNamed": "Benutzer {name} auswählen",
+  "noKeyboardLayoutsConfigured": "Keine Tastaturbelegungen konfiguriert. Bitte konfigurieren Sie Layouts in /etc/sddm.conf.d/*.conf",
+  "noUsersFound": "SDDM konnte keinen Benutzer finden. Geben Sie unten Ihren Benutzernamen ein:"
+}
