@@ -1,12 +1,16 @@
 # slickSDDM
 
+![assets](assets/initial.png)
+
+![assets](assets/enter.png)
+
 > [!WARNING]
 > This theme requires **SDDM v0.21.0 or newer**. Make sure your distro provides the correct version before installing.
 
 # TRANSLATIONS
 
-consult docs/*
-consult TRANSLATORS.md
+1. consult docs/*
+2. consult TRANSLATORS.md
 
 # Dependencies
 
