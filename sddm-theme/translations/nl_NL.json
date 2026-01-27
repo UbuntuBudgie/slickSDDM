@@ -1,0 +1,22 @@
+{
+  "pressAnyKey": "Druk op een toets",
+  "username": "Gebruikersnaam",
+  "password": "Wachtwoord",
+  "login": "Inloggen",
+  "loggingIn": "Inloggen",
+  "loginFailed": "Inloggen is mislukt",
+  "promptUser": "Gebruikersnaam invoeren ",
+  "capslockWarning": "Caps Lock staat aan",
+  "suspend": "Opschorten",
+  "reboot": "Opnieuw opstarten",
+  "shutdown": "Uitschakelen",
+  "changeSession": "Sessie wijzigen",
+  "changeKeyboardLayout": "Toetsenbordindeling wijzigen",
+  "toggleVirtualKeyboard": "Virtueel toetsenbord omschakelen",
+  "powerOptions": "Opties voor energiebeheer",
+  "closeUserSelection": "Selectie van gebruikers sluiten",
+  "selectUser": "Gebruiker selecteren",
+  "selectUserNamed": "Selecteer gebruiker {name}",
+  "noKeyboardLayoutsConfigured": "Geen toetsenbordindelingen geconfigureerd. Configureer lay-outs in /etc/sddm.conf.d/*.conf",
+  "noUsersFound": "SDDM kon geen enkele gebruiker vinden. Typ hieronder uw gebruikersnaam:"
+}

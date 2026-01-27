@@ -1,0 +1,22 @@
+{
+  "pressAnyKey": "Premeu qualsevol tecla.",
+  "username": "Nom d'usuari",
+  "password": "Contrasenya",
+  "login": "Entrada",
+  "loggingIn": "S'entra a la sessió",
+  "loginFailed": "Ha fallat entrar a la sessió.",
+  "promptUser": "Escriviu el nom d'usuari",
+  "capslockWarning": "El blocatge de majúscules està activat.",
+  "suspend": "Suspèn-te",
+  "reboot": "Reinicia't",
+  "shutdown": "Atura't",
+  "changeSession": "Canvia de sessió",
+  "changeKeyboardLayout": "Canvia la disposició del teclat.",
+  "toggleVirtualKeyboard": "Activa / desactiva el teclat virtual",
+  "powerOptions": "Opcions d'energia",
+  "closeUserSelection": "Tanca la selecció d'usuari.",
+  "selectUser": "Seleccioneu l'usuari",
+  "selectUserNamed": "Selecciona l'usuari {name}",
+  "noKeyboardLayoutsConfigured": "No hi ha cap disposició de teclat configurada. Establiu les disposicions a /etc/sddm.conf.d/*.conf",
+  "noUsersFound": "L'SDDM no ha pogut trobar cap usuari. Escriviu el nom d'usuari a continuació:"
+}

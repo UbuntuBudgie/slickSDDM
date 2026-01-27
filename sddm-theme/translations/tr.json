@@ -1,0 +1,22 @@
+{
+  "pressAnyKey": "Herhangi bir tuşa basın",
+  "username": "Kullanıcı adı",
+  "password": "Parola",
+  "login": "Giriş",
+  "loggingIn": "Giriş yapılıyor",
+  "loginFailed": "Giriş başarısız",
+  "promptUser": "Kullanıcı adınızı giriniz",
+  "capslockWarning": "Caps Lock açık",
+  "suspend": "Durdur",
+  "reboot": "Yeniden başlat",
+  "shutdown": "Kapat",
+  "changeSession": "Oturumu değiştir",
+  "changeKeyboardLayout": "Klavye düzenini değiştir",
+  "toggleVirtualKeyboard": "Sanal klavyeyi aç/kapat",
+  "powerOptions": "Güç seçenekleri",
+  "closeUserSelection": "Kullanıcı seçimini kapat",
+  "selectUser": "Kullancıyı seçin",
+  "selectUserNamed": "{name} kullanıcısını seçiniz",
+  "noKeyboardLayoutsConfigured": "Klavyeniz için herhangi bir düzen yapılandırılmamış. Lütfen /etc/sddm.conf.d/*.conf dosyasında düzenleri yapılandırın.",
+  "noUsersFound": "SDDM herhangi bir kullanıcı bulamadı. Kullanıcı adınızı aşağıya yazın."
+}
