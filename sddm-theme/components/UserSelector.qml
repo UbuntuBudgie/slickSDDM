@@ -92,11 +92,16 @@ Item {
                 width: parent.width
                 height: parent.height
                 source: model.icon
+                username: model.name  // NEW: Pass username for fallback avatar selection
                 active: index === userList.currentIndex
                 opacity: active ? 1.0 : Config.avatarInactiveOpacity
                 enabled: userModel.rowCount() > 1 // No need to open the selector if there's only one user
-                tooltipText: active && selector.listUsers ? "Close user selection" : (active && !listUsers ? "Select user" : `Select user ${model.name}`)
-                showTooltip: selector.focus && !listUsers && active
+                tooltipText: {
+                    if (!active) return "";
+                    if (selector.listUsers) return TranslationManager.closeUserSelection;
+                    return TranslationManager.selectUser;
+                }
+                showTooltip: selector.focus && !selector.listUsers && active
 
                 Behavior on opacity {
                     enabled: Config.enableAnimations
@@ -110,7 +115,6 @@ Item {
                         // Open selector
                         selector.openUserList();
                         selector.focus = true;
-                        userList.model.reset();
                     } else {
                         // Collapse the list if the selected user gets another click
                         if (index === userList.currentIndex) {
