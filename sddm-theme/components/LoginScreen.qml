@@ -8,7 +8,7 @@ Item {
     signal close
     signal toggleLayoutPopup
 
-    state: "normal"
+    state: Config.loginAreaShowAllUsers ? "selectingUser" : "normal"
     property bool stateChanging: false
     function safeStateChange(newState) { // This is probably overkill, but whatever
         if (!stateChanging) {

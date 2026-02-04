@@ -140,8 +140,11 @@ background-fill-mode = "fill"
 
 | Option | Type | Default | Description |
 |--------|------|---------|-------------|
-| `position` | Enum | `"left"` | Login area position<br>**Values**: `"left"`, `"center"`, `"right"` |
+| Option | Type | Default | Description |
+|--------|------|---------|-------------|
+| `position` | Enum | `"left"` | Position of the login area<br>**Values**: `"left"`, `"center"`, `"right"` |
 | `margin` | Integer | `50` | Distance from edge or top<br>Set to `-1` to center vertically/horizontally |
+| `show-all-users` | Boolean | `false` | Display all user avatars by default instead of just the selected user<br>Users can still collapse the list by clicking the active avatar |
 
 ### `[LoginScreen.LoginArea.Avatar]`
 

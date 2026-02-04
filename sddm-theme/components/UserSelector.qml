@@ -9,7 +9,7 @@ Item {
     signal closeUserList
     signal userChanged(userIndex: int, username: string, userRealName: string, userIcon: string, needsPassword: bool)
 
-    property bool listUsers: false
+    property bool listUsers: Config.loginAreaShowAllUsers   
     property string orientation: ""
     property bool isDragging: false
 

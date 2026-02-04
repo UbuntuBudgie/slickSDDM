@@ -70,8 +70,9 @@ QtObject {
     property real loginScreenSaturation: config.realValue("LoginScreen/saturation") // @possible:-1.0 ≤ R ≤ 1.0 @desc:Saturation of the background of the login screen. 0.0 leaves unchanged, -1.0 makes it grayscale and 1.0 very saturated.
 
     // [LoginScreen.LoginArea]
-    property string loginAreaPosition: config.stringValue("LoginScreen.LoginArea/position") || "center" // @possible:'left' | 'center' | 'right' @desc:Position of the login area.
-    property int loginAreaMargin: config.intValue("LoginScreen.LoginArea/margin") // @desc:Margin of the login area relative to its anchor point.<br/>If position is set to `center`, this option specifies the top margin, left/right margin otherwise.<br/><br/><strong>Set this option to `-1` to center the login area.</strong>
+    property string loginAreaPosition: config.stringValue("LoginScreen.LoginArea/position") || "left"
+    property int loginAreaMargin: config.intValue("LoginScreen.LoginArea/margin")
+    property bool loginAreaShowAllUsers: config.boolValue("LoginScreen.LoginArea/show-all-users") // NEW
 
     // [LoginScreen.LoginArea.Avatar]
     property string avatarShape: config.stringValue("LoginScreen.LoginArea.Avatar/shape") || "circle" // @possible:'circle' || 'square' @desc:Shape of the avatar. <br/>See also: <a href="#avatarborderradius">border-radius<a>
