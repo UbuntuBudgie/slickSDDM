@@ -161,7 +161,7 @@ Item {
                     top: parent.top
                 }
                 width: parent.width
-                text: "SDDM could not find any user. Type your username below:"
+                text: TranslationManager.noUsersFound
                 wrapMode: Text.Wrap
                 horizontalAlignment: {
                     if (Config.loginAreaPosition === "left") {
@@ -336,7 +336,7 @@ Item {
                     icon: Config.getIcon(Config.loginButtonIcon)
                     label: TranslationManager.login ? TranslationManager.login : "Login"
                     showLabel: Config.loginButtonShowTextIfNoPassword && !loginScreen.userNeedsPassword
-                    tooltipText: !Config.tooltipsDisableLoginButton && (!Config.loginButtonShowTextIfNoPassword || loginScreen.userNeedsPassword) ? (TranslationManager.login || "Login") : ""
+                    tooltipText: !Config.tooltipsDisableLoginButton && (!Config.loginButtonShowTextIfNoPassword || loginScreen.userNeedsPassword) ? (TranslationManager.login || TranslationManager.login) : ""
                     iconSize: Config.loginButtonIconSize
                     fontFamily: Config.loginButtonFontFamily
                     fontSize: Config.loginButtonFontSize

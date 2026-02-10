@@ -1,0 +1,22 @@
+{
+  "pressAnyKey": "Pressione qualquer tecla",
+  "username": "Nome de usuário",
+  "password": "Senha",
+  "login": "Login",
+  "loggingIn": "Logging in",
+  "loginFailed": "Login failed",
+  "promptUser": "Digite seu nome de usuário",
+  "capslockWarning": "A tecla Caps Lock está ativada",
+  "suspend": "Suspender",
+  "reboot": "Reiniciar",
+  "shutdown": "Desligar",
+  "changeSession": "Alterar sessão",
+  "changeKeyboardLayout": "Alterar layout do teclado",
+  "toggleVirtualKeyboard": "Alternar teclado virtual",
+  "powerOptions": "Opções de energia",
+  "closeUserSelection": "Fechar seleção de usuário",
+  "selectUser": "Selecionar usuário",
+  "selectUserNamed": "Selecione o usuário {name}",
+  "noKeyboardLayoutsConfigured": "Nenhum layout de teclado configurado. Configure os layouts em /etc/sddm.conf.d/*.conf",
+  "noUsersFound": "O SDDM não encontrou nenhum usuário. Digite seu nome de usuário abaixo:"
+}

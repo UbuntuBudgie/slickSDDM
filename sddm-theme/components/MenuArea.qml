@@ -36,7 +36,7 @@ Item {
                     popup.open();
                 }
             }
-            tooltipText: "Change session"
+            tooltipText: TranslationManager.changeSession
 
             Popup {
                 id: popup
@@ -130,7 +130,7 @@ Item {
                     popup.open();
                 }
             }
-            tooltipText: "Change keyboard layout"
+            tooltipText: TranslationManager.changeKeyboardLayout
             // FIX: Array bounds checking for keyboard layouts
             label: showLabel ? (keyboard && keyboard.layouts && keyboard.currentLayout >= 0 && keyboard.currentLayout < keyboard.layouts.length ? keyboard.layouts[keyboard.currentLayout].shortName.toUpperCase() : "") : ""
 
@@ -238,7 +238,7 @@ Item {
             onClicked: {
                 loginScreen.showKeyboard = !loginScreen.showKeyboard;
             }
-            tooltipText: "Toggle virtual keyboard"
+            tooltipText: TranslationManager.toggleVirtualKeyboard
         }
     }
 
@@ -268,7 +268,7 @@ Item {
             onClicked: {
                 popup.open();
             }
-            tooltipText: "Power options"
+            tooltipText: TranslationManager.powerOptions
 
             Popup {
                 id: popup

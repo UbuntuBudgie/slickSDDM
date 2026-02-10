@@ -1,0 +1,21 @@
+{
+  "capslockWarning": "Capslock Warning",
+  "changeKeyboardLayout": "Change Keyboard Layout",
+  "changeSession": "Change Session",
+  "closeUserSelection": "Close User Selection",
+  "loggingIn": "Logging In",
+  "login": "Login",
+  "loginFailed": "Login Failed",
+  "noKeyboardLayoutsConfigured": "No Keyboard Layouts Configured",
+  "noUsersFound": "No Users Found",
+  "password": "Password",
+  "powerOptions": "Power Options",
+  "pressAnyKey": "Press Any Key",
+  "promptUser": "Prompt User",
+  "reboot": "Reboot",
+  "selectUser": "Select User",
+  "shutdown": "Shutdown",
+  "suspend": "Suspend",
+  "toggleVirtualKeyboard": "Toggle Virtual Keyboard",
+  "username": "Username"
+}

@@ -1,0 +1,22 @@
+{
+  "pressAnyKey": "Presione cualquier tecla",
+  "username": "Usuario",
+  "password": "Contraseña",
+  "login": "Acceder",
+  "loggingIn": "Iniciando sesión",
+  "loginFailed": "Error al iniciar sesión",
+  "promptUser": "Ingrese su nombre de usuario",
+  "capslockWarning": "Bloq Mayús está activado",
+  "suspend": "Suspender",
+  "reboot": "Reiniciar",
+  "shutdown": "Apagar",
+  "changeSession": "Cambiar sesión",
+  "changeKeyboardLayout": "Cambiar distribución de teclado",
+  "toggleVirtualKeyboard": "Alternar teclado virtual",
+  "powerOptions": "Opciones de energía",
+  "closeUserSelection": "Cerrar selección de usuario",
+  "selectUser": "Seleccionar usuario",
+  "selectUserNamed": "Seleccionar usuario {name}",
+  "noKeyboardLayoutsConfigured": "No hay distribuciones de teclado configuradas. Configure las distribuciones en /etc/sddm.conf.d/*.conf",
+  "noUsersFound": "SDDM no pudo encontrar ningún usuario. Escriba su nombre de usuario a continuación:"
+}

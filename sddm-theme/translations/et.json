@@ -1,0 +1,22 @@
+{
+  "pressAnyKey": "Vajuta suvalist klahvi",
+  "username": "Kasutajanimi",
+  "password": "Salasõna",
+  "login": "Logi sisse",
+  "loggingIn": "Sisselogimisel",
+  "loginFailed": "Sisselogimine ei õnnestunud",
+  "promptUser": "Sisesta oma kasutajanimi",
+  "capslockWarning": "Caps Lock (suurtähtede lukustus) on lülitatud sisse",
+  "suspend": "Peata",
+  "reboot": "Taaskäivita",
+  "shutdown": "Seiska",
+  "changeSession": "Vaheta sessiooni",
+  "changeKeyboardLayout": "Vaheta klahvistiku paigutust",
+  "toggleVirtualKeyboard": "Lülita virtuaalne klahvistik sisse/välja",
+  "powerOptions": "Toitevalikud",
+  "closeUserSelection": "Sulge kasutaja valik",
+  "selectUser": "Vali kasutaja",
+  "selectUserNamed": "Vali kasutaja {name}",
+  "noKeyboardLayoutsConfigured": "Ühtegi klahvistikupaigutust pole seadistatud. Palun seadista nad siin: /etc/sddm.conf.d/*.conf",
+  "noUsersFound": "SDDM ei leidnud ühtegi kasutajat. Palun sisesta kasutajanimi alljärgnevalt:"
+}
