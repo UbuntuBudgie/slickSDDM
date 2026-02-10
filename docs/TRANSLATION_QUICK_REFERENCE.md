@@ -56,8 +56,12 @@ tx push -s
 # Pull from Transifex and update everything
 python3 translate-manager.py
 
-# Test different locales
-LANG=es_ES.UTF-8 sddm-greeter-qt6 --test-mode --theme ./sddm-theme
+# Test different locales e.g. testing fr_FR
+Temporarily update sddm-theme/components/TranslationManager.qml
+change the line "readonly property string currentLocale: Qt.locale().name" to read
+"readonly property string currentLocale: "fr_FR"
+
+sddm-greeter-qt6 --test-mode --theme ./sddm-theme
 
 # Commit
 git commit -am "Update translations"
