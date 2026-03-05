@@ -235,9 +235,36 @@ Item {
                 enabled: root.state === "lockState"
                 onLoginRequested: {
                     root.state = "loginState";
+                loginScreen.safeStateChange("normal");
+                focusRetryTimer.retryCount = 0;
+                focusRetryTimer.start();                }
+            }
+
+            Timer {
+                id: focusRetryTimer
+                interval: 50
+                repeat: true
+                property int retryCount: 0
+                property int maxRetries: 20
+
+                onTriggered: {
+                    retryCount++;
+
                     loginScreen.resetFocus();
+
+                    var focusReached = false;
+                    if (loginScreen.userNeedsPassword) {
+                        focusReached = loginScreen.password.input.activeFocus;
+                    } else {
+                        focusReached = loginScreen.loginButton.activeFocus;
+                    }
+
+                    if (focusReached || retryCount >= maxRetries) {
+                        stop();
+                    }
                 }
             }
+
             LoginScreen {
                 id: loginScreen
                 z: root.state === "loginState" ? 2 : 1

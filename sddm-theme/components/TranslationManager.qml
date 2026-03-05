@@ -59,18 +59,23 @@ QtObject {
         },
         'en': {
             'capslockWarning': "Capslock Warning",
+            'changeKeyboardLayout': "Change Keyboard Layout",
+            'changeSession': "Change Session",
             'closeUserSelection': "Close User Selection",
             'loggingIn': "Logging In",
             'login': "Login",
             'loginFailed': "Login Failed",
             'noKeyboardLayoutsConfigured': "No Keyboard Layouts Configured",
+            'noUsersFound': "No Users Found",
             'password': "Password",
+            'powerOptions': "Power Options",
             'pressAnyKey': "Press Any Key",
             'promptUser': "Prompt User",
             'reboot': "Reboot",
             'selectUser': "Select User",
             'shutdown': "Shutdown",
             'suspend': "Suspend",
+            'toggleVirtualKeyboard': "Toggle Virtual Keyboard",
             'username': "Username",
         },
         'en_GB': {
@@ -355,11 +360,16 @@ QtObject {
     readonly property string shutdown: tr('shutdown')
 
     // Tooltips and UI
+    readonly property string changeSession: tr('changeSession')
+    readonly property string changeKeyboardLayout: tr('changeKeyboardLayout')
+    readonly property string toggleVirtualKeyboard: tr('toggleVirtualKeyboard')
+    readonly property string powerOptions: tr('powerOptions')
     readonly property string closeUserSelection: tr('closeUserSelection')
     readonly property string selectUser: tr('selectUser')
 
     // Error messages
     readonly property string noKeyboardLayoutsConfigured: tr('noKeyboardLayoutsConfigured')
+    readonly property string noUsersFound: tr('noUsersFound')
 
     // Parameterized strings
     function selectUserNamed(name) {

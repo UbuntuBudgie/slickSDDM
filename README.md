@@ -44,3 +44,8 @@ cd slickSDDM/
 - [Match-Yang/sddm-deepin](https://github.com/Match-Yang/sddm-deepin): inspiration and code reference;
 - [qt/qtvirtualkeyboard](https://github.com/qt/qtvirtualkeyboard): code reference;
 - [iconify.design](https://iconify.design/): icons
+
+# License
+
+All code inherits the same GPL-3 license as from SilentSDDM
+All faces.png inherits the same GPL-2 license as from budgie-control-center user-accounts/data/faces where the .jpg images have beenn converted to .png equivalents.

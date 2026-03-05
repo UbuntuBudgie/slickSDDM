@@ -163,7 +163,10 @@ Item {
         hoverEnabled: true
         z: -1
         anchors.fill: lockScreen
-        onClicked: lockScreen.loginRequested()
+        onClicked: function(mouse) {
+            mouse.accepted = true;
+            Qt.callLater(function() { lockScreen.loginRequested(); });
+        }
     }
 
     Keys.onPressed: function (event) {
@@ -175,7 +178,7 @@ Item {
             event.accepted = false;
             return;
         } else {
-            lockScreen.loginRequested();
+            Qt.callLater(function() { lockScreen.loginRequested(); });
         }
         event.accepted = true;
     }
