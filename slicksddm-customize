@@ -269,7 +269,7 @@ get_config_value() {
         line=$(echo "$line" | sed 's/^[[:space:]]*//;s/[[:space:]]*$//')
         
         # Skip empty lines and comments
-        [[ -z "$line" || "$line" =~ ^# || "$line" =~ ^; ]] && continue
+        [[ -z "$line" || "$line" =~ ^# || "$line" =~ "^;" ]] && continue
 
         # Check for section header
         if [[ "$line" =~ ^\[.*\]$ ]]; then
@@ -382,7 +382,7 @@ list_config() {
         [[ -z "$line" ]] && continue
 
         # Check for comments
-        if [[ "$line" =~ ^# || "$line" =~ ^\; ]]; then
+        if [[ "$line" =~ ^# || "$line" =~ "^\;" ]]; then
             if [[ $VERBOSE -eq 1 ]]; then
                 print_color "$BLUE" "$line"
             fi
@@ -545,7 +545,7 @@ interactive_main_menu() {
     while true; do
         clear
         print_color "$BOLD$CYAN" "╔════════════════════════════════════════════╗"
-        print_color "$BOLD$CYAN" "║   slickSDDM Theme Configuration Wizard    ║"
+        print_color "$BOLD$CYAN" "║   slickSDDM Theme Configuration Wizard     ║"
         print_color "$BOLD$CYAN" "╚════════════════════════════════════════════╝"
         echo ""
         echo "Theme: $THEME_NAME"
@@ -564,6 +564,7 @@ interactive_main_menu() {
         echo "10) Restore from Backup"
         echo "11) Reset to Defaults"
         echo ""
+        echo "T) Test Current Theme"
         echo "Q) Quit (and restart SDDM)"
         echo "X) Exit (without restart)"
         echo ""
@@ -577,15 +578,40 @@ interactive_main_menu() {
             5) interactive_menu_buttons ;;
             6) interactive_virtual_keyboard ;;
             7) interactive_tooltips ;;
-            8) list_config | less ;;
+            8) list_config | less -R ;;
             9) create_backup; read -p "Press Enter to continue..." ;;
             10) interactive_restore_backup ;;
             11) interactive_reset ;;
+            [Tt]) test_theme ;;
             [Qq]) restart_sddm; exit 0 ;;
             [Xx]) info "Exiting without restart"; exit 0 ;;
             *) warning "Invalid option" ; read -p "Press Enter to continue..." ;;
         esac
     done
+}
+
+#######################################
+# Test theme in preview mode
+#######################################
+test_theme() {
+    clear
+    print_color "$BOLD" "Test Theme Preview"
+    echo "══════════════════"
+    echo ""
+    print_color "$CYAN" "Launching theme in test mode..."
+    print_color "$YELLOW" "Close the preview window to return to this menu."
+    echo ""
+
+    if command -v sddm-greeter-qt6 &>/dev/null; then
+        sddm-greeter-qt6 --test-mode --theme "$THEME_DIR"
+    elif command -v sddm-greeter &>/dev/null; then
+        sddm-greeter --test-mode --theme "$THEME_DIR"
+    else
+        warning "Could not find sddm-greeter or sddm-greeter-qt6"
+        info "Try manually: sddm-greeter-qt6 --test-mode --theme $THEME_DIR"
+    fi
+
+    read -p "Press Enter to continue..."
 }
 
 #######################################
