@@ -36,6 +36,50 @@ cd slickSDDM/
    
 ```sddm-greeter-qt6 --test-mode --theme /usr/share/sddm/themes/yourthemename```
 
+## install systemd units
+
+from the systemd folder install to /usr/lib/systemd/system
+
+for debian packaging postinst
+
+```
+#!/bin/bash
+set -e
+
+if [ "$1" = "configure" ]; then
+    # Reload systemd daemon
+    systemctl daemon-reload || true
+    
+    # Enable and start units
+    systemctl enable sddm-backgrounds-cache.timer || true
+    systemctl enable sddm-backgrounds-cache.path || true
+    systemctl start sddm-backgrounds-cache.timer || true
+    systemctl start sddm-backgrounds-cache.path || true
+    
+    # Generate initial cache
+    /usr/share/sddm/themes/ubuntu-budgie-login/scripts/update-sddm-backgrounds-cache || true
+fi
+
+#DEBHELPER#
+```
+
+for debian packaging prerm
+
+```
+#!/bin/bash
+set -e
+
+if [ "$1" = "remove" ]; then
+    # Stop and disable units
+    systemctl stop sddm-backgrounds-cache.timer || true
+    systemctl stop sddm-backgrounds-cache.path || true
+    systemctl disable sddm-backgrounds-cache.timer || true
+    systemctl disable sddm-backgrounds-cache.path || true
+fi
+
+#DEBHELPER#
+```
+
 ## Customization
 
 There is a bash script called slick-customize that can be used to configure the theme

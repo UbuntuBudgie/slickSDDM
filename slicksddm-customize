@@ -96,6 +96,9 @@ Examples:
   $SCRIPT_NAME --set "LoginScreen.LoginArea.Avatar/active-border-color=#ff0000"
       Set avatar border color to red
 
+  $SCRIPT_NAME --set "General/use-accounts-service-backgrounds=true"
+      Enable per-user wallpapers from AccountsService
+
   $SCRIPT_NAME --get "LockScreen/background"
       Display current lock screen background
 
@@ -115,6 +118,7 @@ Configuration Keys:
   Keys follow the format: Section/key or Section.Subsection/key
   Examples:
     General/scale
+    General/use-accounts-service-backgrounds
     LockScreen/background
     LoginScreen.LoginArea.Avatar/shape
     LoginScreen.MenuArea.Power/display
@@ -627,10 +631,12 @@ interactive_general_settings() {
         echo "  Scale: $(get_config_value "General" "scale")"
         echo "  Animations: $(get_config_value "General" "enable-animations")"
         echo "  Background Fill Mode: $(get_config_value "General" "background-fill-mode")"
+        echo "  AccountsService Backgrounds: $(get_config_value "General" "use-accounts-service-backgrounds")"
         echo ""
         echo "1) Set UI Scale (0.5 - 2.0)"
         echo "2) Toggle Animations (true/false)"
         echo "3) Set Background Fill Mode (fill/fit/stretch)"
+        echo "4) Toggle Per-User Wallpapers (AccountsService)"
         echo ""
         echo "B) Back to main menu"
         echo ""
@@ -670,6 +676,19 @@ interactive_general_settings() {
                     3) set_config_value "General" "background-fill-mode" "stretch" ;;
                     *) warning "Invalid choice" ;;
                 esac
+                read -p "Press Enter to continue..."
+                ;;
+            4)
+                current=$(get_config_value "General" "use-accounts-service-backgrounds")
+                if [[ "$current" == "true" ]]; then
+                    new_value="false"
+                    info "Disabling per-user wallpapers - will use theme backgrounds"
+                else
+                    new_value="true"
+                    info "Enabling per-user wallpapers from AccountsService"
+                    info "Each user will see their desktop wallpaper on the login screen"
+                fi
+                set_config_value "General" "use-accounts-service-backgrounds" "$new_value"
                 read -p "Press Enter to continue..."
                 ;;
             [Bb]) return ;;
