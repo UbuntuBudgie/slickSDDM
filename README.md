@@ -36,6 +36,19 @@ cd slickSDDM/
    
 ```sddm-greeter-qt6 --test-mode --theme /usr/share/sddm/themes/yourthemename```
 
+## Customization
+
+There is a bash script called slick-customize that can be used to configure the theme
+
+```
+cd slickSDDM
+sudo ./slicksddm-customize -i
+```
+
+You should ship a copy of your theme.conf file in the same folder called theme.conf.example to allow the script to restore to defaults if requested.
+
+You should update slicksddm-customize to point to yourthemename
+
 
 # Acknowledgements
 
