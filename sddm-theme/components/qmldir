@@ -1,1 +1,4 @@
 singleton AccountsService 1.0 AccountsService.qml
+singleton Config 1.0 Config.qml
+singleton Languages 1.0 Languages.qml
+singleton TranslationManager 1.0 TranslationManager.qml
