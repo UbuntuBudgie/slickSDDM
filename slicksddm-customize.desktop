@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=SlickSDDM Customize
+Comment=Terminal based customization of the SlickSDDM greeter
+Exec=sh -c 'pkexec slicksddm-customize -i'
+Icon=slicksddm-customize
+Terminal=true
+Type=Application
+Categories=Utility;
