@@ -632,11 +632,13 @@ interactive_general_settings() {
         echo "  Animations: $(get_config_value "General" "enable-animations")"
         echo "  Background Fill Mode: $(get_config_value "General" "background-fill-mode")"
         echo "  AccountsService Backgrounds: $(get_config_value "General" "use-accounts-service-backgrounds")"
+        echo "  Lock Screen Display: $(get_config_value "LockScreen" "display")"
         echo ""
         echo "1) Set UI Scale (0.5 - 2.0)"
         echo "2) Toggle Animations (true/false)"
         echo "3) Set Background Fill Mode (fill/fit/stretch)"
         echo "4) Toggle Per-User Wallpapers (AccountsService)"
+        echo "5) Toggle Lock Screen Display"
         echo ""
         echo "B) Back to main menu"
         echo ""
@@ -689,6 +691,20 @@ interactive_general_settings() {
                     info "Each user will see their desktop wallpaper on the login screen"
                 fi
                 set_config_value "General" "use-accounts-service-backgrounds" "$new_value"
+                read -p "Press Enter to continue..."
+                ;;
+            5)
+                current=$(get_config_value "LockScreen" "display")
+                if [[ "$current" == "true" ]]; then
+                    new_value="false"
+                    info "Disabling lock screen - will skip directly to login screen"
+                    info "Note: On multi-monitor setups, lock screen is auto-disabled"
+                else
+                    new_value="true"
+                    info "Enabling lock screen - will show on startup (single monitor)"
+                    info "Note: Multi-monitor setups will still skip the lock screen"
+                fi
+                set_config_value "LockScreen" "display" "$new_value"
                 read -p "Press Enter to continue..."
                 ;;
             [Bb]) return ;;

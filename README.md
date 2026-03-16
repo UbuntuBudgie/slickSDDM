@@ -34,60 +34,26 @@ cd slickSDDM/
 4. Make sure you change ```Current=``` to be yourthemename
 5. test your changes
    
-```sddm-greeter-qt6 --test-mode --theme /usr/share/sddm/themes/yourthemename```
+    sddm-greeter-qt6 --test-mode --theme /usr/share/sddm/themes/yourthemename
 
 ## install systemd units
 
 from the systemd folder install to /usr/lib/systemd/system
 
-for debian packaging postinst
+## sddm scripts
 
-```
-#!/bin/bash
-set -e
+    budgie-sddm-display-setup --> /usr/libexec/budgie-sddm-display-setup
+    slicksddm-customize --> /usr/bin
+    slicksddm-customize.1 --> man1 help folder
 
-if [ "$1" = "configure" ]; then
-    # Reload systemd daemon
-    systemctl daemon-reload || true
-    
-    # Enable and start units
-    systemctl enable sddm-backgrounds-cache.timer || true
-    systemctl enable sddm-backgrounds-cache.path || true
-    systemctl start sddm-backgrounds-cache.timer || true
-    systemctl start sddm-backgrounds-cache.path || true
-    
-    # Generate initial cache
-    /usr/share/sddm/themes/ubuntu-budgie-login/scripts/update-sddm-backgrounds-cache || true
-fi
-
-#DEBHELPER#
-```
-
-for debian packaging prerm
-
-```
-#!/bin/bash
-set -e
-
-if [ "$1" = "remove" ]; then
-    # Stop and disable units
-    systemctl stop sddm-backgrounds-cache.timer || true
-    systemctl stop sddm-backgrounds-cache.path || true
-    systemctl disable sddm-backgrounds-cache.timer || true
-    systemctl disable sddm-backgrounds-cache.path || true
-fi
-
-#DEBHELPER#
-```
 
 ## Customization
 
 There is a bash script called slick-customize that can be used to configure the theme
 
-```
-cd slickSDDM
-sudo ./slicksddm-customize -i
-```
+
+    sudo ./slicksddm-customize -i
+
 
 You should ship a copy of your theme.conf file in the same folder called theme.conf.example to allow the script to restore to defaults if requested.
 

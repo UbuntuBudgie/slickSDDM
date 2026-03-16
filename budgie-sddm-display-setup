@@ -1,0 +1,83 @@
+#!/usr/bin/env bash
+
+# Copyright 2026 Ubuntu Budgie Developers
+# GPL-3+ license
+# Mirrors all usable monitors to the best one
+
+export DISPLAY=:0
+PATH=/usr/bin:/usr/sbin:/bin:/sbin
+
+# Locate SDDM Xauthority
+for AUTH in /var/run/sddm/*authfile /run/sddm/*authfile; do
+    [ -f "$AUTH" ] && export XAUTHORITY="$AUTH" && break
+done
+
+# Wait for X server
+for i in {1..20}; do
+    if xrandr --query >/dev/null 2>&1; then
+        break
+    fi
+    sleep 0.5
+done
+
+xrandr --query >/dev/null 2>&1 || exit 0
+
+# Extra delay for GPUs that initialize slowly
+sleep 1
+
+PRIMARY=""
+BEST_PIXELS=0
+VALID_MONITORS=()
+
+# Parse xrandr safely
+while read -r OUTPUT STATUS REST; do
+
+    if [[ "$STATUS" != "connected" ]]; then
+        continue
+    fi
+
+    NAME="$OUTPUT"
+
+    # Extract current active mode (the one with *)
+    MODE=$(xrandr --query | awk -v mon="$NAME" '
+        $1 == mon {found=1; next}
+        found && /\*/ {print $1; exit}
+        found && /^[A-Za-z]/ {exit}
+    ')
+
+    # Skip monitors without active mode (dock ghost ports)
+    if [[ ! "$MODE" =~ ^[0-9]+x[0-9]+ ]]; then
+        continue
+    fi
+
+    WIDTH=${MODE%x*}
+    HEIGHT=${MODE#*x}
+
+    PIXELS=$((WIDTH * HEIGHT))
+
+    VALID_MONITORS+=("$NAME")
+
+    if (( PIXELS > BEST_PIXELS )); then
+        BEST_PIXELS=$PIXELS
+        PRIMARY="$NAME"
+    fi
+
+done < <(xrandr --query)
+
+# Exit if nothing usable
+[ ${#VALID_MONITORS[@]} -eq 0 ] && exit 0
+
+# Fallback if detection failed
+[ -z "$PRIMARY" ] && PRIMARY="${VALID_MONITORS[0]}"
+
+# Enable primary monitor
+xrandr --output "$PRIMARY" --auto --primary
+
+# Mirror other monitors
+for MON in "${VALID_MONITORS[@]}"; do
+    if [ "$MON" != "$PRIMARY" ]; then
+        xrandr --output "$MON" --auto --same-as "$PRIMARY"
+    fi
+done
+
+exit 0
