@@ -7,76 +7,90 @@
 export DISPLAY=:0
 PATH=/usr/bin:/usr/sbin:/bin:/sbin
 
-# Locate SDDM Xauthority
+# Find SDDM Xauthority
 for AUTH in /var/run/sddm/*authfile /run/sddm/*authfile; do
     [ -f "$AUTH" ] && export XAUTHORITY="$AUTH" && break
 done
 
-# Wait for X server
+# Wait for X to become ready
 for i in {1..20}; do
-    if xrandr --query >/dev/null 2>&1; then
-        break
-    fi
+    xrandr --query >/dev/null 2>&1 && break
     sleep 0.5
 done
 
 xrandr --query >/dev/null 2>&1 || exit 0
 
-# Extra delay for GPUs that initialize slowly
+# Extra GPU settle time (important for docks/NVIDIA)
 sleep 1
+
+VALID_MONITORS=()
 
 PRIMARY=""
 BEST_PIXELS=0
-VALID_MONITORS=()
 
-# Parse xrandr safely
+LOW_WIDTH=99999
+LOW_HEIGHT=99999
+
+# Ignore unusable fallback modes
+MIN_WIDTH=1024
+MIN_HEIGHT=768
+
+# Detect monitors
 while read -r OUTPUT STATUS REST; do
 
-    if [[ "$STATUS" != "connected" ]]; then
-        continue
-    fi
+    [ "$STATUS" != "connected" ] && continue
 
     NAME="$OUTPUT"
 
-    # Extract current active mode (the one with *)
-    MODE=$(xrandr --query | awk -v mon="$NAME" '
+    MODE=$(xrandr | awk -v mon="$NAME" '
         $1 == mon {found=1; next}
         found && /\*/ {print $1; exit}
         found && /^[A-Za-z]/ {exit}
     ')
 
-    # Skip monitors without active mode (dock ghost ports)
-    if [[ ! "$MODE" =~ ^[0-9]+x[0-9]+ ]]; then
-        continue
-    fi
+    [[ ! "$MODE" =~ ^[0-9]+x[0-9]+ ]] && continue
 
     WIDTH=${MODE%x*}
     HEIGHT=${MODE#*x}
 
-    PIXELS=$((WIDTH * HEIGHT))
+    # Skip unusable fallback modes
+    if (( WIDTH < MIN_WIDTH || HEIGHT < MIN_HEIGHT )); then
+        continue
+    fi
 
     VALID_MONITORS+=("$NAME")
 
+    PIXELS=$((WIDTH * HEIGHT))
+
+    # Determine largest monitor for primary
     if (( PIXELS > BEST_PIXELS )); then
         BEST_PIXELS=$PIXELS
         PRIMARY="$NAME"
     fi
 
+    # Determine smallest resolution for mirroring
+    if (( WIDTH < LOW_WIDTH )); then
+        LOW_WIDTH=$WIDTH
+    fi
+
+    if (( HEIGHT < LOW_HEIGHT )); then
+        LOW_HEIGHT=$HEIGHT
+    fi
+
 done < <(xrandr --query)
 
-# Exit if nothing usable
+# Exit safely if nothing usable
 [ ${#VALID_MONITORS[@]} -eq 0 ] && exit 0
 
-# Fallback if detection failed
-[ -z "$PRIMARY" ] && PRIMARY="${VALID_MONITORS[0]}"
+MODE="${LOW_WIDTH}x${LOW_HEIGHT}"
 
-# Enable primary monitor
-xrandr --output "$PRIMARY" --auto --primary
+# Configure primary display
+xrandr --output "$PRIMARY" --mode "$MODE" --primary
 
-# Mirror other monitors
+# Mirror remaining monitors
 for MON in "${VALID_MONITORS[@]}"; do
     if [ "$MON" != "$PRIMARY" ]; then
-        xrandr --output "$MON" --auto --same-as "$PRIMARY"
+        xrandr --output "$MON" --mode "$MODE" --same-as "$PRIMARY"
     fi
 done
 
