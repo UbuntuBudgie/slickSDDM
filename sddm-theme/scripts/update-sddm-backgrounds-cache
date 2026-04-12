@@ -44,7 +44,7 @@ if os.path.isdir(ACCOUNTS_DIR):
             with open(user_file, 'r') as f:
                 for line in f:
                     line = line.strip()
-                    if line.startswith("BackgroundFile="):
+                    if line.startswith("BackgroundFile=") or line.startswith("Background="):
                         background = line.split('=', 1)[1]
                         # Strip surrounding quotes
                         background = background.strip().strip('"').strip("'")
