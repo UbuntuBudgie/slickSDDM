@@ -105,7 +105,7 @@ Item {
             font.family: Config.lockMessageFontFamily
             font.weight: Config.lockMessageFontWeight
             color: Config.lockMessageColor
-            text: Config.lockMessageText
+            text: Config.lockMessageText && Config.lockMessageText.length > 0 ? Config.lockMessageText : TranslationManager.pressAnyKey
         }
 
         anchors {
