@@ -30,9 +30,18 @@ cd slickSDDM/
 ````
 
 2. ```sudo mkdir /usr/share/sddm/themes/yourthemename```
-3. Create a similar file in the yourthemename folder based on ```sddm-conf/50-ubuntu-budgie.conf```
-4. Make sure you change ```Current=``` to be yourthemename
-5. test your changes
+
+```
+meson setup builddir \
+  -Dtheme_name=mynewdistro-login \
+  -Dtheme_display_name="My Distro Login" \
+  -Dtheme_description="My Distro themed login screen" \
+  -Dtheme_author="My Distro Team" \
+  -Dtheme_website="https://mynewdistro.org"
+meson install -C builddir
+```
+
+3. test your changes
    
     sddm-greeter-qt6 --test-mode --theme /usr/share/sddm/themes/yourthemename
 

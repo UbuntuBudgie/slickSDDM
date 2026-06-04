@@ -4,7 +4,7 @@ After=sddm.service
 
 [Service]
 Type=oneshot
-ExecStart=/usr/share/sddm/themes/ubuntu-budgie-login/scripts/update-sddm-backgrounds-cache
+ExecStart=@THEME_DIR@/scripts/update-sddm-backgrounds-cache
 StandardOutput=journal
 StandardError=journal
 

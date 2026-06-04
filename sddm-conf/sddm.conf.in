@@ -1,12 +1,12 @@
 [Theme]
-Current=ubuntu-budgie-login
+Current=@THEME_NAME@
 ThemeDir=/usr/share/sddm/themes
 CursorTheme=Breeze_Light
 CursorSize=24
 
 [General]
 InputMethod=qtvirtualkeyboard
-GreeterEnvironment=QML2_IMPORT_PATH=/usr/share/sddm/themes/ubuntu-budgie-login/components/,QT_IM_MODULE=qtvirtualkeyboard
+GreeterEnvironment=QML2_IMPORT_PATH=@THEME_DIR@/components/,QT_IM_MODULE=qtvirtualkeyboard
 
 [X11]
 DisplayCommand=/usr/libexec/budgie-sddm-display-setup

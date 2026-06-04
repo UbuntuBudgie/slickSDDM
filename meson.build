@@ -4,4 +4,6 @@ project('slicksddm',
   meson_version: '>= 0.59.0'
 )
 
+theme_name = get_option('theme_name')
+
 subdir('data')

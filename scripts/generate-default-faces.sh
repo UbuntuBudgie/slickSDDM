@@ -4,7 +4,8 @@
 
 set -e
 
-THEME_DIR="/usr/share/sddm/themes/ubuntu-budgie-login"
+SDDM_THEMES_DIR="${SDDM_THEMES_DIR:-/usr/share/sddm/themes}"
+THEME_DIR="${SDDM_THEMES_DIR}/${THEME_NAME:-ubuntu-budgie-login}"
 FACES_DIR="$THEME_DIR/faces"
 
 # Check if running as root

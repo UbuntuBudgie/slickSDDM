@@ -3,7 +3,19 @@
 prefix        = get_option('prefix')
 bindir        = join_paths(prefix, get_option('bindir'))
 mandir        = join_paths(prefix, 'share', 'man')
-theme_dir     = join_paths(prefix, 'share', 'sddm', 'themes', 'ubuntu-budgie-login')
+theme_dir     = join_paths(prefix, 'share', 'sddm', 'themes', theme_name)
+sddm_conf_dir = join_paths(prefix, get_option('sddm_conf_dir'))
+ 
+src = meson.current_source_dir() / '..'
+ 
+# Substitution map shared by all configure_file() calls below
+conf_data = configuration_data()
+conf_data.set('THEME_NAME',         theme_name)
+conf_data.set('THEME_DIR',          theme_dir)
+conf_data.set('THEME_DISPLAY_NAME', get_option('theme_display_name'))
+conf_data.set('THEME_DESCRIPTION',  get_option('theme_description'))
+conf_data.set('THEME_AUTHOR',       get_option('theme_author'))
+conf_data.set('THEME_WEBSITE',      get_option('theme_website'))
 
 src = meson.current_source_dir() / '..'
 
@@ -20,12 +32,20 @@ install_data(
   install_dir: join_paths(mandir, 'man1')
 )
 
-# Install top-level theme files
+# Install top-level theme files (QML entry point and runtime config)
 install_data(
   src / 'sddm-theme/Main.qml',
-  src /'sddm-theme/theme.conf',
-  src / 'sddm-theme/metadata.desktop',
+  src / 'sddm-theme/theme.conf',
   install_dir: theme_dir
+)
+
+# Generate metadata.desktop from template, substituting theme identity tokens
+configure_file(
+  input:         src / 'sddm-theme/metadata.desktop.in',
+  output:        'metadata.desktop',
+  configuration: conf_data,
+  install:       true,
+  install_dir:   theme_dir
 )
 
 # Install theme.conf as theme.conf.example (pristine defaults reference)
@@ -91,8 +111,30 @@ install_subdir(
   strip_directory: false
 )
 
-# Install SDDM config snippet to enable the theme
-install_data(
-  src / 'sddm-conf/50-ubuntu-budgie.conf',
-  install_dir: join_paths(prefix, 'lib', 'sddm', 'sddm.conf.d')
+# Generate SDDM config snippet from template
+configure_file(
+  input:         src / 'sddm-conf/sddm.conf.in',
+  output:        '10-' + theme_name + '.conf',
+  configuration: conf_data,
+  install:       true,
+  install_dir:   sddm_conf_dir
+)
+
+# Generate backgrounds cache update script from template
+configure_file(
+  input:         src / 'sddm-theme/scripts/update-sddm-backgrounds-cache.in',
+  output:        'update-sddm-backgrounds-cache',
+  configuration: conf_data,
+  install:       true,
+  install_mode:  'rwxr-xr-x',
+  install_dir:   join_paths(theme_dir, 'scripts')
+)
+
+# Generate systemd service unit from template
+configure_file(
+  input:         src / 'systemd/sddm-backgrounds-cache.service.in',
+  output:        'sddm-backgrounds-cache.service',
+  configuration: conf_data,
+  install:       true,
+  install_dir:   join_paths(prefix, 'lib', 'systemd', 'system')
 )

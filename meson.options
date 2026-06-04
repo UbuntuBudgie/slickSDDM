@@ -1,0 +1,28 @@
+option('theme_name',
+  type: 'string',
+  value: 'ubuntu-budgie-login',
+  description: 'SDDM theme directory name (the folder under /usr/share/sddm/themes/)')
+option('theme_display_name',
+  type: 'string',
+  value: 'Ubuntu Budgie Login',
+  description: 'Human-readable theme name shown in SDDM theme selectors')
+
+option('theme_description',
+  type: 'string',
+  value: 'Ubuntu Budgie themed login screen',
+  description: 'Short description shown in SDDM theme selectors')
+
+option('theme_author',
+  type: 'string',
+  value: 'David Mohammed',
+  description: 'Author name written into metadata.desktop')
+
+option('theme_website',
+  type: 'string',
+  value: 'https://ubuntubudgie.org',
+  description: 'Project website written into metadata.desktop')
+
+option('sddm_conf_dir',
+  type: 'string',
+  value: 'lib/sddm/sddm.conf.d',
+  description: 'Relative path under prefix for the SDDM conf snippet')
