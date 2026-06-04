@@ -62,28 +62,9 @@ Rectangle {
             hash = hash & hash;
         }
         hash = Math.abs(hash);
-        
-        // Use absolute paths to avoid resolution issues
-        var faceFiles = [
-            "file:///usr/share/sddm/themes/ubuntu-budgie-login/faces/face-1.png",
-            "file:///usr/share/sddm/themes/ubuntu-budgie-login/faces/face-2.png",
-            "file:///usr/share/sddm/themes/ubuntu-budgie-login/faces/face-3.png",
-            "file:///usr/share/sddm/themes/ubuntu-budgie-login/faces/face-4.png",
-            "file:///usr/share/sddm/themes/ubuntu-budgie-login/faces/face-5.png",
-            "file:///usr/share/sddm/themes/ubuntu-budgie-login/faces/face-6.png",
-            "file:///usr/share/sddm/themes/ubuntu-budgie-login/faces/face-7.png",
-            "file:///usr/share/sddm/themes/ubuntu-budgie-login/faces/face-8.png",
-            "file:///usr/share/sddm/themes/ubuntu-budgie-login/faces/face-9.png",
-            "file:///usr/share/sddm/themes/ubuntu-budgie-login/faces/face-10.png",
-            "file:///usr/share/sddm/themes/ubuntu-budgie-login/faces/face-11.png",
-            "file:///usr/share/sddm/themes/ubuntu-budgie-login/faces/face-12.png",
-            "file:///usr/share/sddm/themes/ubuntu-budgie-login/faces/face-13.png",
-            "file:///usr/share/sddm/themes/ubuntu-budgie-login/faces/face-14.png",
-            "file:///usr/share/sddm/themes/ubuntu-budgie-login/faces/face-15.png"
-        ];
-        
-        var selectedIndex = hash % faceFiles.length;
-        return faceFiles[selectedIndex];
+        var faceCount = 15;
+        var selectedIndex = (hash % faceCount) + 1;
+        return Qt.resolvedUrl("../faces/face-" + selectedIndex + ".png");
     }
 
     // Timer to check and replace default avatar after initial load
