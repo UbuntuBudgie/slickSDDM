@@ -108,6 +108,17 @@ Item {
         }
         scale: 0.5 // Initial animation
 
+        Rectangle {
+                id: loginAreaBackdrop
+                anchors.fill: parent
+                anchors.margins: -20
+                radius: 16
+                color: "#1a1f2e"
+                opacity: 0.65
+                visible: Config.loginAreaBackdrop
+                z: -1
+            }
+
         Behavior on scale {
             enabled: Config.enableAnimations
             NumberAnimation {

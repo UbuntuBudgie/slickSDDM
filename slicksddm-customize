@@ -968,6 +968,7 @@ interactive_loginscreen() {
         echo "2) Configure Avatar"
         echo "3) Configure Password Input"
         echo "4) Configure Login Button"
+        echo "5) Toggle Login Area Backdrop"
         echo ""
         echo "B) Back to main menu"
         echo ""
@@ -982,6 +983,7 @@ interactive_loginscreen() {
             2) interactive_loginscreen_avatar ;;
             3) interactive_loginscreen_password ;;
             4) interactive_loginscreen_button ;;
+            5) interactive_loginscreen_backdrop ;;
             [Bb]) return ;;
             *) warning "Invalid option"; read -p "Press Enter to continue..." ;;
         esac
@@ -1129,6 +1131,17 @@ interactive_loginscreen_button() {
             *) warning "Invalid option"; read -p "Press Enter to continue..." ;;
         esac
     done
+}
+
+#######################################
+# Interactive menu - Login Area Backdrop
+#######################################
+interactive_loginscreen_backdrop() {
+    current=$(get_config_value "LoginScreen.LoginArea" "backdrop")
+    new_value=$([[ "$current" == "true" ]] && echo "false" || echo "true")
+    set_config_value "LoginScreen.LoginArea" "backdrop" "$new_value"
+    success "Login area backdrop: $new_value"
+    read -p "Press Enter to continue..."
 }
 
 #######################################

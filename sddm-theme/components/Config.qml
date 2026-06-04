@@ -73,6 +73,7 @@ QtObject {
     property string loginAreaPosition: config.stringValue("LoginScreen.LoginArea/position") || "left"
     property int loginAreaMargin: config.intValue("LoginScreen.LoginArea/margin")
     property bool loginAreaShowAllUsers: config.boolValue("LoginScreen.LoginArea/show-all-users") // NEW
+    property bool loginAreaBackdrop: config.boolValue("LoginScreen.LoginArea/backdrop")
 
     // [LoginScreen.LoginArea.Avatar]
     property string avatarShape: config.stringValue("LoginScreen.LoginArea.Avatar/shape") || "circle" // @possible:'circle' || 'square' @desc:Shape of the avatar. <br/>See also: <a href="#avatarborderradius">border-radius<a>
