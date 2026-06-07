@@ -6,7 +6,7 @@
   "loggingIn": "Anmeldung läuft",
   "login": "Anmelden",
   "loginFailed": "Anmeldung fehlgeschlagen",
-  "noKeyboardLayoutsConfigured": "Keine Tastaturbelegungen konfiguriert. Bitte konfigurieren Sie Layouts in /etc/sddm.conf.d/*.conf",
+  "noKeyboardLayoutsConfigured": "Keine Tastaturbelegungen konfiguriert",
   "noUsersFound": "SDDM konnte keinen Benutzer finden. Geben Sie unten Ihren Benutzernamen ein:",
   "password": "Passwort",
   "powerOptions": "Energieoptionen",

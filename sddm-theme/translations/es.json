@@ -6,7 +6,7 @@
   "loggingIn": "Iniciando sesión",
   "login": "Acceder",
   "loginFailed": "Error al iniciar sesión",
-  "noKeyboardLayoutsConfigured": "No hay distribuciones de teclado configuradas. Configure las distribuciones en /etc/sddm.conf.d/*.conf",
+  "noKeyboardLayoutsConfigured": "No hay distribuciones de teclado configuradas",
   "noUsersFound": "SDDM no pudo encontrar ningún usuario. Escriba su nombre de usuario a continuación:",
   "password": "Contraseña",
   "powerOptions": "Opciones de energía",

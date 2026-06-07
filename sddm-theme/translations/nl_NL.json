@@ -6,7 +6,7 @@
   "loggingIn": "Inloggen",
   "login": "Inloggen",
   "loginFailed": "Inloggen is mislukt",
-  "noKeyboardLayoutsConfigured": "Geen toetsenbordindelingen geconfigureerd. Configureer lay-outs in /etc/sddm.conf.d/*.conf",
+  "noKeyboardLayoutsConfigured": "Geen toetsenbordindelingen geconfigureerd",
   "noUsersFound": "SDDM kon geen enkele gebruiker vinden. Typ hieronder uw gebruikersnaam:",
   "password": "Wachtwoord",
   "powerOptions": "Opties voor energiebeheer",

@@ -6,7 +6,7 @@
   "loggingIn": "Connexion en cours",
   "login": "Connexion",
   "loginFailed": "Échec de la connexion",
-  "noKeyboardLayoutsConfigured": "Aucune disposition de clavier configurée. Veuillez configurer les dispositions dans /etc/sddm.conf.d/*.conf",
+  "noKeyboardLayoutsConfigured": "Aucune disposition de clavier configurée",
   "noUsersFound": "SDDM n'a pas pu trouver d'utilisateur. Tapez votre nom d'utilisateur ci-dessous :",
   "password": "Mot de passe",
   "powerOptions": "Options d'alimentation",

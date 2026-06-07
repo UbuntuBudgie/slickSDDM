@@ -6,7 +6,7 @@
   "loggingIn": "Autentificacion",
   "login": "S’autentificar",
   "loginFailed": "Fracàs de l’autentificacion",
-  "noKeyboardLayoutsConfigured": "Cap de disposicion de clavièr pas trobada. Mercés de configurar las disposicions dins /etc/sddm.conf.d/*.conf",
+  "noKeyboardLayoutsConfigured": "Cap de disposicion de clavièr pas trobada",
   "noUsersFound": "SDDM a pas pogut trobar cap d’utilizaire. Picatz lo nom d’utilizaire çaijós :",
   "password": "Senhal",
   "powerOptions": "Opcions d’alimentacion",

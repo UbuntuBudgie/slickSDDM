@@ -6,7 +6,7 @@
   "loggingIn": "Giriş yapılıyor",
   "login": "Giriş",
   "loginFailed": "Giriş başarısız",
-  "noKeyboardLayoutsConfigured": "Klavyeniz için herhangi bir düzen yapılandırılmamış. Lütfen /etc/sddm.conf.d/*.conf dosyasında düzenleri yapılandırın.",
+  "noKeyboardLayoutsConfigured": "Klavyeniz için herhangi bir düzen yapılandırılmamış",
   "noUsersFound": "SDDM herhangi bir kullanıcı bulamadı. Kullanıcı adınızı aşağıya yazın.",
   "password": "Parola",
   "powerOptions": "Güç seçenekleri",

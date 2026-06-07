@@ -6,7 +6,7 @@
   "loggingIn": "Sisselogimisel",
   "login": "Logi sisse",
   "loginFailed": "Sisselogimine ei õnnestunud",
-  "noKeyboardLayoutsConfigured": "Ühtegi klahvistikupaigutust pole seadistatud. Palun seadista nad siin: /etc/sddm.conf.d/*.conf",
+  "noKeyboardLayoutsConfigured": "Ühtegi klahvistikupaigutust pole seadistatud",
   "noUsersFound": "SDDM ei leidnud ühtegi kasutajat. Palun sisesta kasutajanimi alljärgnevalt:",
   "password": "Salasõna",
   "powerOptions": "Toitevalikud",

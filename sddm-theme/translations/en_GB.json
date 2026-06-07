@@ -6,7 +6,7 @@
   "loggingIn": "Logging in",
   "login": "Login",
   "loginFailed": "Login failed",
-  "noKeyboardLayoutsConfigured": "No keyboard layouts configured. Please configure layouts in /etc/sddm.conf.d/*.conf",
+  "noKeyboardLayoutsConfigured": "No keyboard layouts configured",
   "noUsersFound": "SDDM could not find any user. Type your username below:",
   "password": "Password",
   "powerOptions": "Power options",

@@ -6,7 +6,7 @@
   "loggingIn": "Kirjautuminen sisään ",
   "login": "Kirjaudu",
   "loginFailed": "Kirjautuminen epäonnistui",
-  "noKeyboardLayoutsConfigured": "Ei määritettyjä näppäimistöasetteluja. Määritä asettelut tiedostossa /etc/sddm.conf.d/*.conf.",
+  "noKeyboardLayoutsConfigured": "Ei määritettyjä näppäimistöasetteluja",
   "noUsersFound": "SDDM ei löytänyt käyttäjiä. Kirjoita käyttäjätunnuksesi alle:",
   "password": "Salasana",
   "powerOptions": "Virtavaihtoehdot",

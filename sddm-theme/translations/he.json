@@ -6,7 +6,7 @@
   "loggingIn": "מתבצעת כניסה",
   "login": "כניסה",
   "loginFailed": "הכניסה נכשלה",
-  "noKeyboardLayoutsConfigured": "לא מוגדרות פריסות מקלדת. נא להגדיר פריסות ב־‎/etc/sddm.conf.d/*.conf",
+  "noKeyboardLayoutsConfigured": "לא מוגדרות פריסות מקלדת.",
   "noUsersFound": "SDDM לא הצליח למצוא משתמשים כלשהם. נא למלא את שם המשתמש שלך להלן:",
   "password": "סיסמה",
   "powerOptions": "אפשרויות תפעול",
