@@ -26,3 +26,18 @@ option('sddm_conf_dir',
   type: 'string',
   value: 'lib/sddm/sddm.conf.d',
   description: 'Relative path under prefix for the SDDM conf snippet')
+
+option('default_background',
+  type: 'string',
+  value: '/usr/share/backgrounds/budgie/budgie-codename.png',
+  description: 'Default background image path for both lock and login screens. Use an absolute path, e.g. /usr/share/backgrounds/mywallpaper.jpg. Leave empty to fall back to a solid colour.')
+
+option('default_lock_background',
+  type: 'string',
+  value: '',
+  description: 'Override the lock screen background independently. Falls back to default_background when empty.')
+
+option('default_login_background',
+  type: 'string',
+  value: '',
+  description: 'Override the login screen background independently. Falls back to default_background when empty.')

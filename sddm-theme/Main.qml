@@ -185,6 +185,9 @@ Item {
             
             function resolveSource(path) {
                 if (!path || path.length === 0)
+                    // Empty path: no background image configured at build time.
+                    // The backgroundColor Rectangle below will show instead,
+                    // using background-color from theme.conf.
                     return "";
 
                 // Absolute filesystem path

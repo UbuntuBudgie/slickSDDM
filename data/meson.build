@@ -17,6 +17,15 @@ conf_data.set('THEME_DESCRIPTION',  get_option('theme_description'))
 conf_data.set('THEME_AUTHOR',       get_option('theme_author'))
 conf_data.set('THEME_WEBSITE',      get_option('theme_website'))
 
+# Background resolution: per-screen option falls back to shared default_background
+_default_bg    = get_option('default_background')
+_lock_bg_raw   = get_option('default_lock_background')
+_login_bg_raw  = get_option('default_login_background')
+_lock_bg       = _lock_bg_raw  != '' ? _lock_bg_raw  : _default_bg
+_login_bg      = _login_bg_raw != '' ? _login_bg_raw : _default_bg
+conf_data.set('DEFAULT_LOCK_BACKGROUND',  _lock_bg)
+conf_data.set('DEFAULT_LOGIN_BACKGROUND', _login_bg)
+
 src = meson.current_source_dir() / '..'
 
 # Install slicksddm-customize script to /usr/bin
@@ -32,11 +41,19 @@ install_data(
   install_dir: join_paths(mandir, 'man1')
 )
 
-# Install top-level theme files (QML entry point and runtime config)
+# Install Main.qml (theme.conf is now generated from theme.conf.in above)
 install_data(
   src / 'sddm-theme/Main.qml',
-  src / 'sddm-theme/theme.conf',
   install_dir: theme_dir
+)
+
+# Generate theme.conf from template, substituting background paths
+configure_file(
+  input:         src / 'sddm-theme/theme.conf.in',
+  output:        'theme.conf',
+  configuration: conf_data,
+  install:       true,
+  install_dir:   theme_dir
 )
 
 # Generate metadata.desktop from template, substituting theme identity tokens
@@ -48,12 +65,13 @@ configure_file(
   install_dir:   theme_dir
 )
 
-# Install theme.conf as theme.conf.example (pristine defaults reference)
-install_data(
-  src / 'sddm-theme/theme.conf',
-  rename: 'theme.conf.example',
-  install_mode: 'r--r--r--',
-  install_dir: theme_dir
+configure_file(
+  input:         src / 'sddm-theme/theme.conf.in',
+  output:        'theme.conf.example',
+  configuration: conf_data,
+  install:       true,
+  install_mode:  'r--r--r--',
+  install_dir:   theme_dir
 )
 
 # Install components directory

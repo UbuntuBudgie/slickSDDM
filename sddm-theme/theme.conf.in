@@ -2,7 +2,7 @@
 ; Customize your login screen appearance
 ;
 ; To customize this theme, run:
-;   sudo ubuntu-budgie-sddm-settings --help
+;   sudo slicksddm-customize --help
 ;
 ; Or edit this file directly (requires sudo):
 ;   sudo nano /usr/share/sddm/themes/*/theme.conf
@@ -20,7 +20,7 @@ padding-top = 0
 padding-right = 0
 padding-bottom = 0
 padding-left = 0
-background = "/usr/share/backgrounds/budgie/budgie-codename.png"
+background = "@DEFAULT_LOCK_BACKGROUND@"
 use-background-color = false
 background-color = "#2f343f"
 blur = 16
@@ -51,7 +51,7 @@ margin-top = -15
 display = true
 position = "bottom-center"
 align = "center"
-text = "Press any key"
+text = ""
 font-family = "Noto Sans"
 font-size = 12
 font-weight = 400
@@ -63,7 +63,7 @@ paint-icon = true
 spacing = 0
 
 [LoginScreen]
-background = "/usr/share/backgrounds/budgie/budgie-codename.png"
+background = "@DEFAULT_LOGIN_BACKGROUND@"
 use-background-color = false
 background-color = "#2f343f"
 blur = 0
