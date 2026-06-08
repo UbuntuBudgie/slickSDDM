@@ -5,9 +5,10 @@ bindir        = join_paths(prefix, get_option('bindir'))
 mandir        = join_paths(prefix, 'share', 'man')
 theme_dir     = join_paths(prefix, 'share', 'sddm', 'themes', theme_name)
 sddm_conf_dir = join_paths(prefix, get_option('sddm_conf_dir'))
- 
+libexec_dir   = join_paths(prefix, get_option('libexecdir'))
+
 src = meson.current_source_dir() / '..'
- 
+
 # Substitution map shared by all configure_file() calls below
 conf_data = configuration_data()
 conf_data.set('THEME_NAME',         theme_name)
@@ -28,11 +29,29 @@ conf_data.set('DEFAULT_LOGIN_BACKGROUND', _login_bg)
 
 src = meson.current_source_dir() / '..'
 
+# Install display helper script
+install_data(
+  src / 'budgie-sddm-display-setup',
+  install_dir: libexec_dir,
+  install_mode: 'rwxr-xr-x'
+)
+
 # Install slicksddm-customize script to /usr/bin
 install_data(
   src / 'slicksddm-customize',
   install_dir: bindir,
   install_mode: 'rwxr-xr-x'
+)
+
+# slicksddm-customize
+install_data(
+  src / 'slicksddm-customize.png',
+  install_dir: join_paths(prefix, 'share', 'pixmaps')
+)
+
+install_data(
+  src / 'slicksddm-customize.desktop',
+  install_dir: join_paths(prefix, 'share', 'applications')
 )
 
 # Install man page
@@ -76,6 +95,7 @@ configure_file(
 
 # Install components directory
 install_data(
+  src / 'sddm-theme/components/AccountsService.qml',
   src / 'sddm-theme/components/Avatar.qml',
   src / 'sddm-theme/components/Config.qml',
   src / 'sddm-theme/components/CVKeyboard.qml',
@@ -154,5 +174,11 @@ configure_file(
   output:        'sddm-backgrounds-cache.service',
   configuration: conf_data,
   install:       true,
+  install_dir:   join_paths(prefix, 'lib', 'systemd', 'system')
+)
+
+install_data(
+  src / 'systemd/sddm-backgrounds-cache.path',
+  src / 'systemd/sddm-backgrounds-cache.timer',
   install_dir:   join_paths(prefix, 'lib', 'systemd', 'system')
 )
